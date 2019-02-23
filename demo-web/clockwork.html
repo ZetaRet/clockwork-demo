@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="author" content="Zeta Ret">
+<meta name="theme-color" content="#040404">
+<title>Zeta Ret Clockwork Demo</title>
+<link rel="icon" type="image/png" href="favicon.png" />
+<!-- unpack Zeta Ret WebCore [lookup js/zetaret/global/webcore.js] in folder relative to clockwork.html js/zetaret/global/ -->
+<script src="js/zetaret/global/webcore.js"></script>
+<!-- unpack Zeta Ret ProtoSS [https://github.com/ZetaRet/protoss] in folder relative to clockwork.html js/zetaret/global/packages/protoss/ -->
+<script src="js/zetaret/global/packages/protoss/protoss.book.of.cheese.js"></script>
+<script src="js/zetaret/global/packages/protoss/protoss.all.js"></script>
+<script src="js/zetaret/global/packages/protoss/protoss/ProtoSS.js"></script>
+<script src="js/zetaret/global/packages/protoss/xeltoss/XeltoSS.js"></script>
+<script src="js/zetaret/global/packages/protoss/skytoss/SkytoSS.js"></script>
+<!-- unpack Zeta Ret Clockwork [https://github.com/ZetaRet/clockwork] in folder relative to clockwork.html js/zetaret/global/packages/clockwork/ -->
+<script src="js/zetaret/global/packages/clockwork/src/Clockwork.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/data/AppData.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/data/ChildContainer.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/data/Matrix.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/data/MetaData.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/data/RSI.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/data/Randomizer.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/data/headers/Matrix.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/data/headers/Randomizer.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/events/Event.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/events/EventDispatcher.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/events/KeyboardEvent.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/events/MouseEvent.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/events/headers/Event.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/events/headers/EventDispatcher.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/events/headers/KeyboardEvent.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/events/headers/MouseEvent.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/skin/css/ProtoCSS.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/skin/html/ProtoHTML.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/skin/silver/AlertBox_SilverSkin.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/skin/silver/Checkbox_SilverSkin.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/skin/silver/ProgressLoader_SilverSkin.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/skin/silver/RadioButton_SilverSkin.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/skin/silver/Scrollbar_SilverSkin.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/AlertBox.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/Button.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/ButtonContainer.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/Checkbox.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/Dialog.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/DisplayObject.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/DisplayObjectContainer.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/FlawlessButton.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/Gallery.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/GalleryItem.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/HTMLElement.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/Image.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/Label.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/LabelButton.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/List.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/MaskedObject.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/Menu.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/MenuButton.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/PageBase.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/ProgressLoader.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/RadioButton.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/Scrollbar.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/Scrollpane.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/Shape.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/SimpleScrollpane.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/SkinnableComponent.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/TextField.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/Window.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/headers/AlertBox.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/headers/Button.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/headers/ButtonContainer.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/headers/Checkbox.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/headers/Dialog.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/headers/DisplayObject.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/headers/DisplayObjectContainer.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/headers/FlawlessButton.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/headers/Gallery.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/headers/GalleryItem.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/headers/HTMLElement.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/headers/Image.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/headers/Label.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/headers/LabelButton.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/headers/List.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/headers/MaskedObject.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/headers/Menu.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/headers/MenuButton.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/headers/PageBase.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/headers/ProgressLoader.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/headers/RadioButton.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/headers/Scrollbar.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/headers/Scrollpane.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/headers/Shape.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/headers/SimpleScrollpane.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/headers/TextField.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/ui/headers/Window.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/graphics/GraphicBitmapFill.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/graphics/GraphicCommand.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/graphics/GraphicData.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/graphics/GraphicEndFill.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/graphics/GraphicFill.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/graphics/GraphicGradientFill.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/graphics/GraphicPath.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/graphics/GraphicShaderFill.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/graphics/GraphicSolidFill.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/graphics/GraphicStroke.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/graphics/GraphicText.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/graphics/Graphics.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/graphics/headers/GraphicBitmapFill.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/graphics/headers/GraphicCommand.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/graphics/headers/GraphicData.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/graphics/headers/GraphicEndFill.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/graphics/headers/GraphicFill.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/graphics/headers/GraphicGradientFill.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/graphics/headers/GraphicPath.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/graphics/headers/GraphicShaderFill.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/graphics/headers/GraphicSolidFill.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/graphics/headers/GraphicStroke.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/graphics/headers/GraphicText.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/graphics/headers/Graphics.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/context/ContextRenderer.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/context/c2d/Canvas2DRenderer.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/context/c2d/headers/Canvas2DRenderer.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/context/headers/ContextRenderer.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/mediators/DOMMediator.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/mediators/GraphicContext2DMediator.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/mediators/headers/DOMMediator.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/controllers/ChildController.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/controllers/DragController.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/controllers/InteractionController.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/controllers/KeyboardController.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/controllers/MouseController.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/controllers/PageController.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/controllers/Stage2DController.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/controllers/headers/ChildController.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/controllers/headers/PageController.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/controllers/headers/Stage2DController.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/interfaces/IEvents.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/interfaces/IFrontEnd.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/interfaces/IGraphics.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/color/ARGB.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/color/ColorTransform.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/color/HSB.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/color/HSL.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/color/RGB.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/color/headers/ARGB.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/color/headers/ColorTransform.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/color/headers/HSB.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/color/headers/HSL.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/color/headers/RGB.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/color/utils/ColorUtil.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/headers/Clockwork.Header.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/utils/ControlUtils.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/utils/FitTypes.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/stacks/Clockwork.Tier0.Init.js"></script>
+<script src="js/zetaret/global/packages/clockwork/src/stacks/Clockwork.Tier0.js"></script>
+<!-- unpack Zeta Ret Clockwork Demo App [lookup js/demo.app.js]  in folder relative to clockwork.html js/ -->
+<script src="js/demo.app.js"></script>
+<style>
+.canvas-over {
+	cursor: pointer;
+}
+
+#bg {
+	display: none;
+}
+
+#img_content {
+	display: none;
+}
+
+html, body {
+	padding: 0;
+	margin: 0;
+}
+
+.asset {
+	display: none;
+}
+
+#documentation {
+	font-family: Arial, sans-serif;
+	background: #d4e3ff;
+	padding: 8px;
+}
+
+#documentation h2 {
+	margin: 3px;
+}
+
+#documentation ul {
+	background: #bdd0f3;
+	margin: 1px;
+	border-radius: 8px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	padding-right: 8px;
+}
+
+#documentation ul ul {
+	background: #a2bdef;
+}
+
+#documentation li {
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+
+#documentation a {
+	font-weight:bold;
+	color: #133779;
+	text-decoration:none;
+}
+#documentation a:hover {
+	color:black;
+	text-decoration:underline;
+}
+#documentation .shadow-title {
+	letter-spacing: .05em;
+	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75);
+	color: #222;
+	background-image: linear-gradient(0deg,#8da7d8,#d4e3ff);
+	padding: 3px 6px;
+	border-radius: 6px;
+}
+#documentation .shadow-title-s {
+	text-shadow: none;
+	color: #222;
+	background-image: linear-gradient(0deg,#a2bdef,#bdd0f3);
+	padding: 3px 6px;
+	border-radius: 5px;
+}
+#navigation {
+	margin: 15px;
+}
+#navigation a {
+	background: linear-gradient(0deg,#8da7d8,#d4e3ff);
+	padding: 6px;
+	font-family: Arial, sans-serif;
+	line-height: 18px;
+	display: table-cell;
+	color: black;
+	text-decoration: none;
+	border-radius:6px;
+}
+#navigation select {
+	background: linear-gradient(0deg,#8da7d8,#d4e3ff);
+	padding: 6px;
+	font-family: Arial,sans-serif;
+	color: black;
+	border-radius: 6px;
+	border: none;
+	height: 30px;
+}
+#navigation a:hover, #navigation select:hover {
+	background: linear-gradient(180deg,#d5e2fc,#a8bee7);
+}
+#navigation .navcnt {
+	display: table-cell;
+}
+#navigation a:hover {
+	color: azure;
+}
+#navigation .spacer {
+	display: table-cell;
+	width:15px;
+}
+#fps {
+	background: gray;
+	color: white;
+	font-family: Arial, sans-serif;
+	padding: 10px;
+}
+</style>
+</head>
+<body id="body" onload="web.initD()" class="loading" style="background-color: #D4D4D4">
+	<div id="body-content">
+		<div id="bg"></div>
+		<div id="assets-container">
+			<img id="pat0" class="asset" onload="web.loadImage()" src="imgs/Canvas_createpattern.png" />
+			<img id="pat1" class="asset" onload="web.loadImage()" src="imgs/Canvas_createpattern1.png" />
+			<img id="pat2" class="asset" onload="web.loadImage()" src="imgs/Canvas_createpattern2.png" />
+			<img id="pat3" class="asset" onload="web.loadImage()" src="imgs/Canvas_createpattern3.png" />
+			<img id="pat4" class="asset" onload="web.loadImage()" src="imgs/Canvas_createpattern4.png" />
+			<img id="pat5" class="asset" onload="web.loadImage()" src="imgs/Canvas_createpattern5.png" />
+			<img id="pat6" class="asset" onload="web.loadImage()" src="imgs/Canvas_createpattern6.png" />
+			<img id="pat7" class="asset" onload="web.loadImage()" src="imgs/Canvas_createpattern7.png" />
+			<img id="pat8" class="asset" onload="web.loadImage()" src="imgs/Canvas_createpattern8.png" />
+			<img id="pat9" class="asset" onload="web.loadImage()" src="imgs/Canvas_createpattern9.png" />
+		</div>
+		<div id="canvas-container" style="position: relative; margin:5px;">
+			<canvas id="canvas" width="940" height="500" style="background-color: #EAEAEA; float: left; margin-right: 1px"> </canvas>
+		</div>
+		<div style="width:100%; position: relative; display: table; clear: both;"></div>
+		<div id="navigation">
+			<a id="nav1btn" href="/#" target="_self" title="toggle root DisplayObjectContainer color transform">Change ColorTransform</a>
+			<span class="spacer"></span>
+			<a id="nav2btn" href="/#" target="_self" title="toggle root DisplayObjectContainer transform">Change Transform</a>
+			<span class="spacer"></span>
+			<a id="nav3btn" href="/#" target="_self" title="toggle mouse controller UI canvas debugger">Change UI Debug</a>
+			<span class="spacer"></span>
+			<div class="navcnt">
+				<select id="material-select" title="change texture in main menu and home page">
+					<option value="0">Default Material</option>
+					<option value="1">Fur</option>
+					<option value="2">Pattern</option>
+					<option value="3">Wood</option>
+					<option value="4">Leather</option>
+					<option value="5">Dark wood</option>
+					<option value="6">Plastic</option>
+					<option value="7">Flowers</option>
+					<option value="8">PBR</option>
+					<option value="9">Cracks</option>
+				</select>
+			</div>
+			<span class="spacer"></span>
+			<div class="navcnt">
+				<select id="blend-select" title="change blending of buttons in main menu">
+					<option value="luminosity">Luminosity</option>
+					<option value="multiply">Multiply</option>
+					<option value="screen">Screen</option>
+					<option value="overlay">Overlay</option>
+					<option value="darken">Darken</option>
+					<option value="lighten">Lighten</option>
+					<option value="color-dodge">ColorDodge</option>
+					<option value="color-burn">ColorBurn</option>
+					<option value="hard-light">HardLight</option>
+					<option value="soft-light">SoftLight</option>
+					<option value="difference">Difference</option>
+					<option value="exclusion">Exclusion</option>
+					<option value="hue">Hue</option>
+					<option value="saturation">Saturation</option>
+					<option value="color">Color</option>
+					<option value="lighter">Lighter</option>
+					<option value="xor">Xor</option>
+					<option value="source-over">SourceOver</option>
+					<option value="source-atop">SourceAtop</option>
+					<option value="destination-over">DestinationOver</option>
+					<option value="destination-out">DestinationOut</option>
+				</select>
+			</div>
+			<span class="spacer"></span>
+			<div class="navcnt">
+				<select id="menualpha" title="change color picker method in home page">
+					<option value="0">Few Alpha</option>
+					<option value="1">No Alpha</option>
+				</select>
+			</div>
+		</div>
+		<div id="fps">0fps</div>
+		<div id="documentation">
+			<h2><img src="imgs/clockwork_logo_small.png"><span class="shadow-title">Zeta Ret Clockwork Demo:</span></h2>
+			<div id="gpucanvas"> </div>
+			<ul>
+			<li class="shadow-title-s">SkytoSS GPU Canvas [WebGL2, WebGL, Experimental-GL] with Rotating Cube</li>
+			<li class="shadow-title-s">Main 2D Canvas</li>
+			<li class="shadow-title-s">UI Debug 2D Canvas</li>
+			<li class="shadow-title-s">FPS Counter </li>
+			<li class="shadow-title-s">HTML Navigation: </li>
+			<li style="list-style-type: none;"><ul>
+				<li>Change ColorTransform - change alpha and shift red channel</li>
+				<li>Change Transform - tilt root DisplayObjectContainer using mixed transform</li>
+				<li>Change UI Debug - toggle mouse controller UI canvas debugger</li>
+				<li>Material Selector - change texture rendering in canvas layers</li>
+				<li>Menu Blend - change canvas menu blending by globalCompositeOperation</li>
+				<li>Color Picker - change alpha 0x88/0xff of canvas menu background color</li>
+			</ul></li>
+			<li class="shadow-title-s">XeltoSS Script Container - HTML Container with ProtoSS transpiled Class in ES6 Standard </li>
+			<li class="shadow-title-s">Menu - rounded pattern buttons with blend luminosity ("home" "misc" "game") [autocache in canvas array]</li>
+			<li class="shadow-title-s">Pages: </li>
+			<li style="list-style-type: none; margin-top: 5px; margin-bottom:5px; font-weight: bold;"><span class="shadow-title-s">home:</span></li>
+			<li style="list-style-type: none;"><ul>
+				<li>rounded pattern button, mouse over activates Keyboard input [draggable]</li>
+				<li>blue label "Zeta Ret Clockwork" - rounded pattern button will display text</li>
+				<li>red rectangle</li>
+				<li>pattern rectangle</li>
+				<li>2 animated black rectangles - uses color and geometric transform [uses int colors]</li>
+				<li>Page Label "Home Page"</li>
+				<li>border rendering around linear gradient rectangle [uses int colors]</li>
+				<li>transformed radial gradient rectangle [uses int colors]</li>
+				<li>shape container - radiant curve 360, pattern round rectangle, radial gradient ellipse, circle and rectangle with border [draggable][mouse wheel][color picker]</li>
+				<li>transformed ellipse with border and drop shadow [uses int colors]</li>
+				<li>transformed complex polygon with cubic curves, border and drop shadow [uses int colors]</li>
+				<li>text label "Hello" [uses int colors]</li>
+				<li>text label "Stroked" with border</li>
+				<li>HTMLElement img, uses canvas DisplayObject transform, red shape mimic of HTMLElement is drawn on canvas using ordered css transform of "matrix(1, 0, 0, 1, 730, 120) rotate(30deg) scale(0.8, 1) skew(40deg,0)" with "forceSelfInvalidate" flag of DisplayObject thus imitating perfectly standard css transformations as follows: calculate Math.cos and Math.sin of x and y rotation, transform rotate matrix using scale x and y, calculate Math.tan of x and y skew, and cross transform by multiplication the product of rotation scale matrix, set translation properties without scale</li>
+			</ul></li>
+			<li style="list-style-type: none; margin-top: 5px; margin-bottom:5px; font-weight: bold;"><span class="shadow-title-s">misc:</span></li>
+			<li style="list-style-type: none;"><ul>
+				<li>gallery - 3 gallery items with images using url loader</li>
+				<li>image - loads url [draggable]</li>
+				<li>Page Label "Misc Page"</li>
+				<li>various text in colors and languages</li>
+				<li>HTMLElement video, uses canvas DisplayObject transform</li>
+			</ul></li>
+			<li style="list-style-type: none; margin-top: 5px; margin-bottom:5px; font-weight: bold;"><span class="shadow-title-s">game:</span></li>
+			<li style="list-style-type: none;"><ul>
+				<li>scrollpane - text label "Clockwork components", checkbox, radio group, YouTube Embed Video Button (open iframe as ProtoSS HTMLElement) [interactive]</li>
+				<li>dialog box with title, accept/cancel/close buttons [interactive][draggable]</li>
+				<li>horizontal scrollpane - menu with buttons (open dialog), masked object [interactive]</li>
+			</ul></li>
+			<li class="shadow-title-s">Links:</li>
+			<li style="list-style-type: none;"><ul>
+				<li class="shadow-title-s"><a href="https://zetaret.com/projects/clockwork/">Back to main site</a></li>
+				<li class="shadow-title-s"><a href="https://github.com/ZetaRet/clockwork">Back to GitHub</a></li>
+			</ul></li>
+			
+			</ul>
+		</div>
+	</div>
+	<div id="xeltoss_script_container"></div>
+	</body>
+</html>
