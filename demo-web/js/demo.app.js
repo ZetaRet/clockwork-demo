@@ -204,15 +204,15 @@ function initApp_index(e) {
 		sh4.graphics.drawRadient(100, -120, 90, [0x00ff00, 0x00ffff, 0xff0000, 0xffff00, 0xff00ff], 12, 50, offset)
 		.textStyle("#333", "16px Arial", 1).text("ZetAd", 0, -100)
 		.beginBitmapFill(globalmat, rm).updateLastCommand({imgid:globalmat+'svgpat'})
-		.drawRoundRect(0, 0, 180, 100, 8, 8, 8, 8)
+		.drawRoundRect(0, 0, 280, 120, 8, 8, 8, 8)
 		.endFill()
-		.beginGradientFill("radial", [250, 15, 0, 250, 15, 50], [0x0000ff, "black"], null, [0, 1])
-		.drawEllipse(200, 0, 100, 30)
+		.beginGradientFill("radial", [350, 15, 0, 350, 15, 50], [0x0000ff, "black"], null, [0, 1])
+		.drawEllipse(300, 0, 100, 30)
 		.endFill()
 		.beginFill(0xffffff00, 1)
 		.lineStyle(2, 0xffff0000)
-		.drawCircle(330, 15, 15)
-		.drawRect(355, 0, 20, 10);
+		.drawCircle(430, 15, 15)
+		.drawRect(455, 0, 20, 10);
 		sh4.cacheRedraw = true;
 	}
 	drawSh4(0);
