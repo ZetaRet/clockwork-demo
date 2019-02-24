@@ -1297,10 +1297,10 @@ function initSkytoSS_index() {
 				y = v[1],
 				z = v[2],
 				m = mm.data;
-			m[12] = m[0] * x + m[4] * y + m[8] * z + m[12];
-			m[13] = m[1] * x + m[5] * y + m[9] * z + m[13];
-			m[14] = m[2] * x + m[6] * y + m[10] * z + m[14];
-			m[15] = m[3] * x + m[7] * y + m[11] * z + m[15];
+			m[12] += m[0] * x + m[4] * y + m[8] * z;
+			m[13] += m[1] * x + m[5] * y + m[9] * z;
+			m[14] += m[2] * x + m[6] * y + m[10] * z;
+			m[15] += m[3] * x + m[7] * y + m[11] * z;
 			return mm;
 		}
 
@@ -1381,8 +1381,8 @@ function initSkytoSS_index() {
 		gpu.gpu.depthFunc(gpu.gpu.LEQUAL);
 
 		function clear(gl, gpuData, id, settings) {
-			gl.clearColor(212 / 255, 227 / 255, 1.0, 1.0);
-			gl.clearDepth(1.0);
+			gl.clearColor(212 / 255, 227 / 255, 1, 1);
+			gl.clearDepth(1);
 			gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 		}
 
@@ -1393,7 +1393,7 @@ function initSkytoSS_index() {
 		function render() {
 			if (pauseRender) return;
 			modelViewMatrix.identity();
-			translate(modelViewMatrix, [-0.0, 0.0, -6.0]);
+			translate(modelViewMatrix, [0, 0, -6]);
 			rotate(modelViewMatrix, cubeRotation * .4, [0, 0, 1]);
 			rotate(modelViewMatrix, cubeRotation * .3, [0, 1, 0]);
 			rotate(modelViewMatrix, cubeRotation * .5, [1, 0, 0]);
