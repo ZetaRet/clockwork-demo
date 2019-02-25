@@ -180,7 +180,7 @@ function ZetaRet_WebCore(doc, params) {
 			var tween = this;
 			if (e.constructor !== Array) e = [e];
 			var timePercent = tween.tt / tween.ap.time;
-			if (ap.ease && ap.ease != 'linear' && ap.ease != 'none') timePercent = obj.animation.easing['ease' + ap.ease](timePercent);
+			if (ap.ease && ap.ease !== 'linear' && ap.ease !== 'none') timePercent = obj.animation.easing['ease' + ap.ease](timePercent);
 			for (var i = 0; i < e.length; i++) {
 				var el = e[i],
 					s = {},
@@ -219,7 +219,7 @@ function ZetaRet_WebCore(doc, params) {
 			}
 			return tween;
 		};
-		obj.animation.zrtween.prototype.start = function(e, p, ap) {
+		oa.zrtween.prototype.start = function(e, p, ap) {
 			var tween = this;
 			if (e.constructor !== Array) e = [e];
 			var ps = ap.pluginset;
@@ -251,7 +251,7 @@ function ZetaRet_WebCore(doc, params) {
 			tween.status = 1;
 			return tween;
 		};
-		obj.animation.zrtween.prototype.stop = function(e, p, ap) {
+		oa.zrtween.prototype.stop = function(e, p, ap) {
 			var tween = this;
 			if (e.constructor !== Array) e = [e];
 			tween.status = 2;
@@ -259,7 +259,6 @@ function ZetaRet_WebCore(doc, params) {
 			if (tween.ap.onstop) tween.ap.onstop(e, p, ap);
 			return tween;
 		};
-
 		window[G.ael]('resize', onResize);
 		onResize();
 		obj.triggers.onResize = onResize;
