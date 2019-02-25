@@ -124,7 +124,7 @@ function ZetaRet_WebCore(doc, params) {
 			}
 			obj.de(obj.doc, "ZetaRet_WebCore_afterResize");
 		}
-		var oa=obj.animation;
+		var oa = obj.animation;
 		oa.zrtween = function zrtween() {};
 		oa.zrtween.prototype.render = function(e, p, ap) {
 			var tween = this;
@@ -525,7 +525,8 @@ function ZetaRet_WebCore(doc, params) {
 		};
 	};
 	obj.animate = function(e, p, ap) {
-		var oa = obj.animation;
+		var oa = obj.animation,
+			zrtpr = oa.zrtween.prototype;
 		if (!oa.h) {
 			oa.h2 = function() {};
 			oa.h = function(ct) {
@@ -590,13 +591,13 @@ function ZetaRet_WebCore(doc, params) {
 			qt: 0,
 			timeScale: 1
 		};
-		tween.render = oa.zrtween.prototype.render;
-		tween.reset = oa.zrtween.prototype.reset;
-		tween.to = oa.zrtween.prototype.to;
-		tween.wait = oa.zrtween.prototype.wait;
-		tween.update = oa.zrtween.prototype.update;
-		tween.start = oa.zrtween.prototype.start;
-		tween.stop = oa.zrtween.prototype.stop;
+		tween.render = zrtpr.render;
+		tween.reset = zrtpr.reset;
+		tween.to = zrtpr.to;
+		tween.wait = zrtpr.wait;
+		tween.update = zrtpr.update;
+		tween.start = zrtpr.start;
+		tween.stop = zrtpr.stop;
 		oa.tweens.push(tween);
 		if (ap.or === undefined) ap.or = ap.r;
 		if (!ap.nostart) tween.start(e, p, ap);
