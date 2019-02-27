@@ -1,0 +1,114 @@
+{
+	"author": "Zeta Ret, Ivo Yankulovski",
+	"description": "Zeta Ret Web Core",
+	"text": "basic web core with animation, extendability, global properties, selectors and canvas",
+	"requires": "",
+	"version": "1.23",
+	"date": "2013 - Today",
+	"supername": "zetaret.global::webcore",
+	"inherits": [],
+	"interfaces": [],
+	"static": {
+		"public_properties": {},
+		"protected_properties": {},
+		"private_properties": {},
+		"public_methods": {},
+		"protected_methods": {},
+		"private_methods": {}
+	},
+	"public_properties": {
+		"doc": "HTMLDocument: doc",
+		"params": "Object: params",
+		"canvas": "Array: []",
+		"autoCanvas": "Array: []",
+		"graphics": "Object: {}",
+		"animation": "Object: default",
+		"totalImages": "Number: 0",
+		"tesselation": "Number: 0",
+		"vertex": "Number: 0",
+		"stage": "Object: default",
+		"events": "Object: {}",
+		"G": "Object: default",
+		"triggers": "Object: {}"
+	},
+	"protected_properties": {},
+	"private_properties": {},
+	"public_methods": {
+		"ZetaRet_WebCore": "doc*: HTMLDocument, params*: Object",
+		"addext": "ext*: Function",
+		"extend": "d*: Object, t*: Object; return Object",
+		"initD": "d: Number",
+		"init": "; return Object",
+		"cev": "t*: String, d: Object, b: Boolean, c: Boolean; return Event",
+		"de": "t*: EventTarget, e*: String",
+		"ael": "t*: EventTarget, e*: String, f*: Function, gid: String",
+		"relg": "gid*: String",
+		"rel": "t*: EventTarget, e*: String, f*: Function",
+		"loadImage": "; return Object",
+		"applyParams": "e*: HTMLElement, p*: Object; return HTMLElement",
+		"ap": "e*: HTMLElement, p*: Object; return HTMLElement",
+		"loadCanvas": "parent: HTMLElement, params: Object, sid: String; return Object",
+		"getDimensions": "; return Object",
+		"getStyle": "e*: HTMLElement; return  CSSStyleDeclaration",
+		"getElement": "sel*: String, top: HTMLElement, params: Object; return HTMLElement|HTMLCollection",
+		"gel": "sel*: String, top: HTMLElement, params: Object; return HTMLElement|HTMLCollection",
+		"debug": "p*: Object; return Object",
+		"rck": "k*: String; return String",
+		"wck": "k*: String, v*: String, d: Number; return Object",
+		"dck": "k*: String; return Object",
+		"initAnimation": "",
+		"animate": "e*: Object|HTMLElement|Array, p*: Object, ap*: Object; return Object",
+		"an": "e*: Object|HTMLElement|Array, p*: Object, ap*: Object; return Object",
+		"setVal": "v*: String|Number, nv*: String|Number; return String|Number",
+		"fitBox": "w*: Number, h*: Number, tw*: Number, th*: Number; return Object",
+		"urlParam": "o*: Object; return String",
+		"encParam": "o*: Object; return String",
+		"request": "p*: Object; return XMLHttpRequest",
+		"r": "p*: Object; return XMLHttpRequest",
+		"updateProgress": "; return Object",
+		"onCreate": ""
+	},
+	"protected_methods": {},
+	"private_methods": {},
+	"static_descriptions": {},
+	"descriptions": {
+		"cev": {
+			"this": "create event"
+		},
+		"de": {
+			"this": "dispatch event"
+		},
+		"ael": {
+			"this": "add event listener"
+		},
+		"relg": {
+			"this": "remove event listener from global registry by id"
+		},
+		"rel": {
+			"this": "remove event listener"
+		},
+		"ap": {
+			"this": "short for applyParams"
+		},
+		"gel": {
+			"this": "short for getElement"
+		},
+		"rck": {
+			"this": "read cookie"
+		},
+		"wck": {
+			"this": "write cookie"
+		},
+		"dck": {
+			"this": "delete cookie"
+		},
+		"an": {
+			"this": "short for animate"
+		},
+		"r": {
+			"this": "short for request"
+		}
+	},
+	"static_examples": {},
+	"examples": {}
+}
