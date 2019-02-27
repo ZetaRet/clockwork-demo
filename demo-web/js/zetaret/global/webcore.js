@@ -124,141 +124,7 @@ function ZetaRet_WebCore(doc, params) {
 			}
 			obj.de(obj.doc, "ZetaRet_WebCore_afterResize");
 		}
-		var oa = obj.animation;
-		oa.zrtween = function zrtween() {};
-		oa.zrtween.prototype.render = function(e, p, ap) {
-			var tween = this;
-			if (e.constructor !== Array) e = [e];
-			if (tween.tt == tween.ap.time) {
-				tween.stop(e, p, ap);
-				if (ap.cqi !== undefined) tween.qi = ap.cqi;
-				var que = tween.q[tween.qi];
-				if (ap.r) {
-					if (ap.r > 0) ap.r--;
-					tween.reset();
-				} else if (que) {
-					tween.p = que.p;
-					tween.ap = que.ap;
-					tween.qi++;
-					tween.reset();
-				} else if (tween.qi < 0) {
-					tween.p = tween.op;
-					tween.ap = tween.oap;
-					tween.qi = 0;
-					tween.reset();
-				}
-			}
-			return tween;
-		};
-		oa.zrtween.prototype.reset = function() {
-			var tween = this;
-			tween.tt = tween.qt > 0 ? tween.qt : 0;
-			tween.start(tween.e, tween.p, tween.ap);
-			tween.update(tween.e, tween.p, tween.ap);
-			return tween;
-		};
-		oa.zrtween.prototype.to = function(p, ap) {
-			var tween = this;
-			tween.q.push({
-				p: p,
-				ap: ap
-			});
-			return tween;
-		};
-		oa.zrtween.prototype.wait = function(t, f) {
-			var tween = this;
-			tween.q.push({
-				p: {},
-				ap: {
-					time: t,
-					onstop: f
-				}
-			});
-			return tween;
-		};
-		oa.zrtween.prototype.update = function(e, p, ap) {
-			var tween = this;
-			if (e.constructor !== Array) e = [e];
-			var timePercent = tween.tt / tween.ap.time;
-			if (ap.ease && ap.ease !== 'linear' && ap.ease !== 'none') timePercent = obj.animation.easing['ease' + ap.ease](timePercent);
-			for (var i = 0; i < e.length; i++) {
-				var el = e[i],
-					s = {},
-					pl = {},
-					asp = {},
-					key, cp, tp, cpV, tpV, suf, vv;
-				for (key in p) {
-					cp = tween.cp[key];
-					tp = tween.tp[key];
-					if (ap.applyv) {
-						cpV = cp;
-						tpV = tp;
-						vv = cpV + (tpV - cpV) * timePercent;
-					} else {
-						cpV = cp ? parseFloat(cp) : 0;
-						tpV = tp ? parseFloat(tp) : 0;
-						suf = cp ? cp.split(cpV + '')[1] : '';
-						vv = cpV + (tpV - cpV) * timePercent + suf;
-					}
-					if (ap.format[key]) vv = ap.format[key](vv);
-					pl[key] = vv;
-					if (ap.plugin[key]) {
-						if (ap.plugin[key] !== 1) {
-							ap.plugin[key](vv, timePercent, el, p, ap, cpV, tpV);
-						}
-					} else s[key] = vv;
-				}
-				if (ap.applyv) asp.v = s;
-				else asp.s = s;
-				if (ap._plugin) ap._plugin(pl, timePercent, el, p, ap);
-				obj.applyParams(el, asp);
-				if (ap.onupdate) ap.onupdate(el, p, ap, timePercent, pl);
-				if (ap.updaten) {
-					el[ap.updaten] = ap.updatev;
-				}
-			}
-			return tween;
-		};
-		oa.zrtween.prototype.start = function(e, p, ap) {
-			var tween = this;
-			if (e.constructor !== Array) e = [e];
-			var ps = ap.pluginset;
-			if (ps && ps.constructor == Function) ps = ps();
-			if (!ap.format) ap.format = {};
-			if (!ap.plugin) ap.plugin = {};
-			for (var i = 0; i < e.length; i++) {
-				var el = e[i],
-					key;
-				for (key in p) {
-					var pk = p[key],
-						s = ap.applyv ? el : obj.getStyle(el),
-						pp = ps && ps[key] !== undefined ? ps[key] : s[key];
-					if (ap.method == 'from') {
-						var npp = pk;
-						pk = pp;
-						pp = npp;
-					}
-					if (ap.applyv) {
-						tween.tp[key] = pk;
-						tween.cp[key] = pp;
-					} else {
-						tween.tp[key] = pk + '';
-						tween.cp[key] = pp + '';
-					}
-				}
-				if (ap.preset) obj.applyParams(el, ap.preset);
-			}
-			tween.status = 1;
-			return tween;
-		};
-		oa.zrtween.prototype.stop = function(e, p, ap) {
-			var tween = this;
-			if (e.constructor !== Array) e = [e];
-			tween.status = 2;
-			tween.ap.r = tween.ap.or;
-			if (tween.ap.onstop) tween.ap.onstop(e, p, ap);
-			return tween;
-		};
+		obj.initAnimation();
 		window[G.ael]('resize', onResize);
 		onResize();
 		obj.triggers.onResize = onResize;
@@ -335,7 +201,7 @@ function ZetaRet_WebCore(doc, params) {
 	obj.loadCanvas = function(parent, params, sid) {
 		if (sid) {
 			for (var i = 0; i < obj.canvas.length; i++) {
-				if (obj.canvas[i].id == sid) return obj.canvas[i];
+				if (obj.canvas[i].id === sid) return obj.canvas[i];
 			}
 			return null;
 		}
@@ -431,9 +297,9 @@ function ZetaRet_WebCore(doc, params) {
 			return top;
 		}
 		var fc = sel.charAt(0);
-		if (fc == '#') return [obj.doc[G.gebi](sel.substr(1))];
-		else if (fc == '.') return top[G.gebcn](sel.substr(1));
-		else if (fc == '@') return top[G.gebn](sel.substr(1));
+		if (fc === '#') return [obj.doc[G.gebi](sel.substr(1))];
+		else if (fc === '.') return top[G.gebcn](sel.substr(1));
+		else if (fc === '@') return top[G.gebn](sel.substr(1));
 		return top[G.gebtn](sel);
 	};
 	obj.gel = obj.getElement;
@@ -459,6 +325,144 @@ function ZetaRet_WebCore(doc, params) {
 	obj.dck = function(k) {
 		obj.wck(k, '', -1);
 		return obj;
+	};
+	obj.initAnimation = function() {
+		var oa = obj.animation;
+		if (oa.zrtween) return;
+		oa.zrtween = function zrtween() {};
+		oa.zrtween.prototype.render = function(e, p, ap) {
+			var tween = this;
+			if (e.constructor !== Array) e = [e];
+			if (tween.tt === tween.ap.time) {
+				tween.stop(e, p, ap);
+				if (ap.cqi !== undefined) tween.qi = ap.cqi;
+				var que = tween.q[tween.qi];
+				if (ap.r) {
+					if (ap.r > 0) ap.r--;
+					tween.reset();
+				} else if (que) {
+					tween.p = que.p;
+					tween.ap = que.ap;
+					tween.qi++;
+					tween.reset();
+				} else if (tween.qi < 0) {
+					tween.p = tween.op;
+					tween.ap = tween.oap;
+					tween.qi = 0;
+					tween.reset();
+				}
+			}
+			return tween;
+		};
+		oa.zrtween.prototype.reset = function() {
+			var tween = this;
+			tween.tt = tween.qt > 0 ? tween.qt : 0;
+			tween.start(tween.e, tween.p, tween.ap);
+			tween.update(tween.e, tween.p, tween.ap);
+			return tween;
+		};
+		oa.zrtween.prototype.to = function(p, ap) {
+			var tween = this;
+			tween.q.push({
+				p: p,
+				ap: ap
+			});
+			return tween;
+		};
+		oa.zrtween.prototype.wait = function(t, f) {
+			var tween = this;
+			tween.q.push({
+				p: {},
+				ap: {
+					time: t,
+					onstop: f
+				}
+			});
+			return tween;
+		};
+		oa.zrtween.prototype.update = function(e, p, ap) {
+			var tween = this;
+			if (e.constructor !== Array) e = [e];
+			var timePercent = tween.tt / tween.ap.time;
+			if (ap.ease && ap.ease !== 'linear' && ap.ease !== 'none') timePercent = obj.animation.easing['ease' + ap.ease](timePercent);
+			for (var i = 0; i < e.length; i++) {
+				var el = e[i],
+					s = {},
+					pl = {},
+					asp = {},
+					key, cp, tp, cpV, tpV, suf, vv;
+				for (key in p) {
+					cp = tween.cp[key];
+					tp = tween.tp[key];
+					if (ap.applyv) {
+						cpV = cp;
+						tpV = tp;
+						vv = cpV + (tpV - cpV) * timePercent;
+					} else {
+						cpV = cp ? parseFloat(cp) : 0;
+						tpV = tp ? parseFloat(tp) : 0;
+						suf = ap.suf ? ap.suf[key] : (cp ? cp.split(cpV + '')[1] : '');
+						vv = cpV + (tpV - cpV) * timePercent + suf;
+					}
+					if (ap.format[key]) vv = ap.format[key](vv);
+					pl[key] = vv;
+					if (ap.plugin[key]) {
+						if (ap.plugin[key] !== 1) {
+							ap.plugin[key](vv, timePercent, el, p, ap, cpV, tpV, key);
+						}
+					} else s[key] = vv;
+				}
+				if (ap.applyv) asp.v = s;
+				else asp.s = s;
+				if (ap._plugin) ap._plugin(pl, timePercent, el, p, ap);
+				obj.applyParams(el, asp);
+				if (ap.onupdate) ap.onupdate(el, p, ap, timePercent, pl);
+				if (ap.updaten) {
+					el[ap.updaten] = ap.updatev;
+				}
+			}
+			return tween;
+		};
+		oa.zrtween.prototype.start = function(e, p, ap) {
+			var tween = this;
+			if (e.constructor !== Array) e = [e];
+			var ps = ap.pluginset;
+			if (ps && ps.constructor === Function) ps = ps();
+			if (!ap.format) ap.format = {};
+			if (!ap.plugin) ap.plugin = {};
+			for (var i = 0; i < e.length; i++) {
+				var el = e[i],
+					key;
+				for (key in p) {
+					var pk = p[key],
+						s = ap.applyv ? el : obj.getStyle(el),
+						pp = ps && ps[key] !== undefined ? ps[key] : s[key];
+					if (ap.method === 'from') {
+						var npp = pk;
+						pk = pp;
+						pp = npp;
+					}
+					if (ap.applyv) {
+						tween.tp[key] = pk;
+						tween.cp[key] = pp;
+					} else {
+						tween.tp[key] = pk + '';
+						tween.cp[key] = pp + '';
+					}
+				}
+				if (ap.preset) obj.applyParams(el, ap.preset);
+			}
+			tween.status = 1;
+			return tween;
+		};
+		oa.zrtween.prototype.stop = function(e, p, ap) {
+			var tween = this;
+			if (e.constructor !== Array) e = [e];
+			tween.status = 2;
+			tween.ap.r = tween.ap.or;
+			if (tween.ap.onstop) tween.ap.onstop(e, p, ap);
+			return tween;
+		};
 	};
 	obj.animation.easing = {
 		linear: function(t) {
@@ -501,29 +505,6 @@ function ZetaRet_WebCore(doc, params) {
 			return t < 0.5 ? 16 * t * t * t * t * t : 1 + 16 * (--t) * t * t * t * t;
 		}
 	};
-	obj.setVal = function(v, nv) {
-		var cpV = v ? parseFloat(v) : 0;
-		var suf = v ? v.split(cpV + '')[1] : '';
-		return nv + suf;
-	};
-	obj.fitBox = function(w, h, tw, th) {
-		w = parseFloat(w);
-		h = parseFloat(h);
-		tw = parseFloat(tw);
-		th = parseFloat(th);
-		var scx = Math.min(w, tw);
-		var scy = Math.min(h, th);
-		var sc = Math.min(scx / w, scy / h);
-		return {
-			w: w,
-			h: h,
-			tw: tw,
-			th: th,
-			scx: scx,
-			scy: scy,
-			sc: sc
-		};
-	};
 	obj.animate = function(e, p, ap) {
 		var oa = obj.animation,
 			zrtpr = oa.zrtween.prototype;
@@ -548,7 +529,7 @@ function ZetaRet_WebCore(doc, params) {
 				oa.lt = ct;
 				for (i = tl - 1; i >= 0; i--) {
 					tween = oa.tweens[i];
-					if (tween.status == 2) oa.tweens.splice(i, 1);
+					if (tween.status === 2) oa.tweens.splice(i, 1);
 				}
 				if (obj.autoCanvas) {
 					for (var aci = 0; aci < obj.autoCanvas.length; aci++) {
@@ -606,6 +587,29 @@ function ZetaRet_WebCore(doc, params) {
 		return tween;
 	};
 	obj.an = obj.animate;
+	obj.setVal = function(v, nv) {
+		var cpV = v ? parseFloat(v) : 0;
+		var suf = v ? v.split(cpV + '')[1] : '';
+		return nv + suf;
+	};
+	obj.fitBox = function(w, h, tw, th) {
+		w = parseFloat(w);
+		h = parseFloat(h);
+		tw = parseFloat(tw);
+		th = parseFloat(th);
+		var scx = Math.min(w, tw);
+		var scy = Math.min(h, th);
+		var sc = Math.min(scx / w, scy / h);
+		return {
+			w: w,
+			h: h,
+			tw: tw,
+			th: th,
+			scx: scx,
+			scy: scy,
+			sc: sc
+		};
+	};
 	obj.urlParam = function(o) {
 		var es = '';
 		for (var p in o) {
@@ -635,15 +639,15 @@ function ZetaRet_WebCore(doc, params) {
 		var key;
 		var a = p.async !== undefined ? p.async : true;
 
-		if (dt == 'form') {
+		if (dt === 'form') {
 			if (pd) {
 				sd = new FormData();
 				for (key in d) sd.append(key, d[key]);
 			}
 			if (ct === true) ct = G.dt.mpfd;
-		} else if (dt == 'file') {
+		} else if (dt === 'file') {
 			if (ct === true) ct = sd.type;
-		} else if (dt == 'json') {
+		} else if (dt === 'json') {
 			if (pd) sd = JSON.stringify(d);
 			if (ct === true) ct = G.dt.ajs;
 		} else {
@@ -657,7 +661,7 @@ function ZetaRet_WebCore(doc, params) {
 			if (xhr.status === 200) {
 				if (p.complete) {
 					var responseData = xhr.responseText;
-					if (rt == 'json') responseData = JSON.parse(responseData);
+					if (rt === 'json') responseData = JSON.parse(responseData);
 					p.complete(responseData);
 				}
 			} else if (p.fail) p.fail(xhr.responseText, xhr.status);
