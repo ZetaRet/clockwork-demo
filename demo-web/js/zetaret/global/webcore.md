@@ -32,7 +32,7 @@ default {},
 
 #  
 __animation__ Object  
-default default,   
+default,   
 
 #  
 __totalImages__ Number  
@@ -48,7 +48,7 @@ default 0,
 
 #  
 __stage__ Object  
-default default,   
+default,   
 
 #  
 __events__ Object  
@@ -56,7 +56,7 @@ default {},
 
 #  
 __G__ Object  
-default default,   
+default,   
 
 #  
 __triggers__ Object  
