@@ -221,12 +221,33 @@ function initApp_index(e) {
 	sh4.notransform = true;
 	sh4.cacheLevel = "sh4";
 	sh4.drag(null,null,null,function(ix,iy,ddx,ddy,ds){this.moveTo(ix+ddx,iy+ddy);this.cacheRedraw=true;});
+	var twt;
 	sh4.addEventListener('wheel',function(e,s){
 		e.preventDefault();
 		var t=e.nativeEvent.deltaY/100;
 		if(Math.abs(t)<1)t=t<0?-1:1;
-		sh4.graphics.clear();
-		drawSh4(sh4.graphics._offset+20*t);
+		var id=web.animation.tweens.indexOf(twt),to=sh4.graphics._offset;
+		if(id!==-1){
+			web.animation.tweens.splice(id,1);
+			to=twt.tp.radialoffset;
+		}
+		twt=web.animate([sh4], {
+			radialoffset: to+20*t
+		}, {
+			applyv: 1,
+			time: 250,
+			ease: "OutQuint",
+			ur: 1,
+			updatev: true,
+			updaten: "invalidateTransform",
+			pluginset: {
+				radialoffset: sh4.graphics._offset
+			},
+			plugin: {
+				radialoffset: radialoffsetplugin
+			}
+		});
+
 		stage.invalidate=true;
 	});
 	console.log(sh4);
