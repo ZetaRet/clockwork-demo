@@ -32,7 +32,7 @@ default {},
 
 #  
 __animation__ Object  
-default,   
+default init,   
 
 #  
 __totalImages__ Number  
@@ -48,7 +48,7 @@ default 0,
 
 #  
 __stage__ Object  
-default,   
+default init,   
 
 #  
 __events__ Object  
@@ -56,7 +56,7 @@ default {},
 
 #  
 __G__ Object  
-default,   
+default init,   
 
 #  
 __triggers__ Object  
@@ -68,33 +68,33 @@ default {},
 
 ##  
 __ZetaRet_WebCore(*HTMLDocument* doc, *Object* params) : *void*__  
-
+  
 - __doc*__ - __*HTMLDocument*__,   
 - __params*__ - __*Object*__,   
 > *return __void__*  
 
 ##  
 __addext(*Function* ext) : *void*__  
-
+  
 - __ext*__ - __*Function*__,   
 > *return __void__*  
 
 ##  
 __extend(*Object* d, *Object* t) : *Object*__  
-
+  
 - __d*__ - __*Object*__,   
 - __t*__ - __*Object*__,   
 > *return __Object__*  
 
 ##  
 __initD(*Number* d) : *void*__  
-
+  
 - d - __*Number*__,   
 > *return __void__*  
 
 ##  
 __init() : *Object*__  
-
+  
 > *return __Object__*  
 
 ##  
@@ -138,12 +138,12 @@ remove event listener
 
 ##  
 __loadImage() : *Object*__  
-
+  
 > *return __Object__*  
 
 ##  
 __applyParams(*HTMLElement* e, *Object* p) : *HTMLElement*__  
-
+  
 - __e*__ - __*HTMLElement*__,   
 - __p*__ - __*Object*__,   
 > *return __HTMLElement__*  
@@ -157,7 +157,7 @@ short for applyParams
 
 ##  
 __loadCanvas(*HTMLElement* parent, *Object* params, *String* sid) : *Object*__  
-
+  
 - parent - __*HTMLElement*__,   
 - params - __*Object*__,   
 - sid - __*String*__,   
@@ -165,18 +165,18 @@ __loadCanvas(*HTMLElement* parent, *Object* params, *String* sid) : *Object*__
 
 ##  
 __getDimensions() : *Object*__  
-
+  
 > *return __Object__*  
 
 ##  
 __getStyle(*HTMLElement* e) : *CSSStyleDeclaration*__  
-
+  
 - __e*__ - __*HTMLElement*__,   
 > *return __CSSStyleDeclaration__*  
 
 ##  
 __getElement(*String* sel, *HTMLElement* top, *Object* params) : *HTMLElement|HTMLCollection*__  
-
+  
 - __sel*__ - __*String*__,   
 - top - __*HTMLElement*__,   
 - params - __*Object*__,   
@@ -192,7 +192,7 @@ short for getElement
 
 ##  
 __debug(*Object* p) : *Object*__  
-
+  
 - __p*__ - __*Object*__,   
 > *return __Object__*  
 
@@ -218,12 +218,12 @@ delete cookie
 
 ##  
 __initAnimation() : *void*__  
-
+  
 > *return __void__*  
 
 ##  
 __animate(*Object|HTMLElement|Array* e, *Object* p, *Object* ap) : *Object*__  
-
+  
 - __e*__ - __*Object|HTMLElement|Array*__,   
 - __p*__ - __*Object*__,   
 - __ap*__ - __*Object*__,   
@@ -239,14 +239,14 @@ short for animate
 
 ##  
 __setVal(*String|Number* v, *String|Number* nv) : *String|Number*__  
-
+  
 - __v*__ - __*String|Number*__,   
 - __nv*__ - __*String|Number*__,   
 > *return __String|Number__*  
 
 ##  
 __fitBox(*Number* w, *Number* h, *Number* tw, *Number* th) : *Object*__  
-
+  
 - __w*__ - __*Number*__,   
 - __h*__ - __*Number*__,   
 - __tw*__ - __*Number*__,   
@@ -255,19 +255,19 @@ __fitBox(*Number* w, *Number* h, *Number* tw, *Number* th) : *Object*__
 
 ##  
 __urlParam(*Object* o) : *String*__  
-
+  
 - __o*__ - __*Object*__,   
 > *return __String__*  
 
 ##  
 __encParam(*Object* o) : *String*__  
-
+  
 - __o*__ - __*Object*__,   
 > *return __String__*  
 
 ##  
 __request(*Object* p) : *XMLHttpRequest*__  
-
+  
 - __p*__ - __*Object*__,   
 > *return __XMLHttpRequest__*  
 
@@ -279,12 +279,12 @@ short for request
 
 ##  
 __updateProgress() : *Object*__  
-
+  
 > *return __Object__*  
 
 ##  
 __onCreate() : *void*__  
-
+  
 > *return __void__*  
 
 ---  
