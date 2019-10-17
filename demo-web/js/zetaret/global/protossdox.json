@@ -1,0 +1,10 @@
+{
+	"name": "Zeta Ret Global",
+	"type": "protossdox",
+	"path": "",
+	"src": "",
+	"namespace": "zetaret.global",
+	"relative": true,
+	"markdown": true,
+	"ext": ["js"]
+}
