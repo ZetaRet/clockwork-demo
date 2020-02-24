@@ -1525,4 +1525,4 @@ function initSkytoSS_index() {
 		if (!r1) web.ael(web.doc, "animate_update", render);
 	}
 	setTimeout(initCanvas, 50);
-};
+}
