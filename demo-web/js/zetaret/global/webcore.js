@@ -75,7 +75,8 @@ function ZetaRet_WebCore(doc, params) {
 		},
 		events: {},
 		G: G,
-		triggers: {}
+		triggers: {},
+		cookieSuffix: " path=/; Secure"
 	};
 	obj.addext = function(ext) {
 		ext(obj, G, defaultParams);
@@ -319,7 +320,7 @@ function ZetaRet_WebCore(doc, params) {
 		} else {
 			e = "";
 		}
-		obj.doc.cookie = k + "=" + v + e + "; path=/";
+		obj.doc.cookie = k + "=" + v + e + ";" + obj.cookieSuffix;
 		return obj;
 	};
 	obj.dck = function(k) {

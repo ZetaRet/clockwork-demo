@@ -1,9 +1,9 @@
 {
-	"author": "Zeta Ret, Ivo Yankulovski",
+	"author": "Zeta Ret",
 	"description": "Zeta Ret Web Core",
 	"text": "basic web core with animation, extendability, global properties, selectors and canvas",
 	"requires": null,
-	"version": "1.23",
+	"version": "1.3.0",
 	"date": "2013 - Today",
 	"supername": "zetaret.global::webcore",
 	"inherits": null,
@@ -29,7 +29,8 @@
 		"stage": "Object: init",
 		"events": "Object: {}",
 		"G": "Object: init",
-		"triggers": "Object: {}"
+		"triggers": "Object: {}",
+		"cookieSuffix": "String: init"
 	},
 	"protected_properties": {},
 	"private_properties": {},

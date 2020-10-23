@@ -1,7 +1,7 @@
-> __Author: Zeta Ret, Ivo Yankulovski__  
+> __Author: Zeta Ret__  
 > __Zeta Ret Web Core__  
 # basic web core with animation, extendability, global properties, selectors and canvas  
-> *Version: 1.23*  
+> *Version: 1.3.0*  
 > *Date: 2013 - Today*  
 
 __required*__
@@ -62,12 +62,16 @@ default init,
 __triggers__ Object  
 default {},   
 
+#  
+__cookieSuffix__ String  
+default init,   
+
 
 ##  
 ### *Methods*  
 
 ##  
-__ZetaRet_WebCore(*HTMLDocument* doc, *Object* params) : *void*__  
+__ZetaRet\_WebCore(*HTMLDocument* doc, *Object* params) : *void*__  
   
 - __doc*__ - __*HTMLDocument*__,   
 - __params*__ - __*Object*__,   
