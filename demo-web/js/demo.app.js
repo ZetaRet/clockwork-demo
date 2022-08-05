@@ -1006,9 +1006,13 @@ window.package("zetaret.global.examples.ui.pages").internal(
 			a = arguments;
 		o.alertbox = new zetaret.global.packages.clockwork.ui.AlertBox();
 		o.checkbox = new zetaret.global.packages.clockwork.ui.Checkbox();
-		o.radiob = new zetaret.global.packages.clockwork.ui.RadioButton();
-		o.radiob1 = new zetaret.global.packages.clockwork.ui.RadioButton();
-		o.radiob2 = new zetaret.global.packages.clockwork.ui.RadioButton();
+		o.rlinks = [
+			["MQjhI9rB3RE", "Komparen"],
+			["zrIjnrD-wX8", "Incoming"],
+			["p_-SyFqGNZU", "Keep Your Distance"],
+			["i-ZbirmLgbI", "I Love You"],
+			["ztVV54sPOns", "Space Ambient"]
+		];
 		o.scrollp = new zetaret.global.packages.clockwork.ui.Scrollpane();
 		o.scrollb = new zetaret.global.packages.clockwork.ui.Scrollbar();
 		o.menu = new zetaret.global.packages.clockwork.ui.Menu();
@@ -1042,36 +1046,33 @@ window.package("zetaret.global.examples.ui.pages").internal(
 			o.winobj.body.addContent(o.checkbox);
 			o.checkbox.checked = true;
 			o.checkbox.bgcheck = true;
-			o.checkbox.moveTo(10, 150).initBox(true, true);
+			o.checkbox.moveTo(10, 90).initBox(true, true);
 			(new zetaret.global.packages.clockwork.skin.silver.Checkbox_SilverSkin()).initSkin(o.checkbox, zetaret.global.examples.ui.menu.SkinData.Silver);
-			o.checkbox.txt.setText("checkbox label");
+			o.checkbox.txt.setText("Switch Player Visibility");
 			o.checkbox.addEventListener("change", function(e, d) {
 				if (o.ytp) o.ytp.setStyle({
 					visibility: !o.checkbox.checked ? "hidden" : "visible"
 				});
 			});
 
-			var rlinks = ["MQjhI9rB3RE", "zrIjnrD-wX8", "p_-SyFqGNZU"],
-				selectedRB = 0;
-			o.winobj.body.addContent(o.radiob);
-			o.radiob.checked = true;
-			o.radiob.bgcheck = true;
-			o.radiob.moveTo(10, 180).initBox(true, true);
-			(new zetaret.global.packages.clockwork.skin.silver.RadioButton_SilverSkin()).initSkin(o.radiob, zetaret.global.examples.ui.menu.SkinData.Silver);
-			o.radiob.txt.setText("radio button label");
-			o.winobj.body.addContent(o.radiob1);
-			o.radiob1.bgcheck = true;
-			o.radiob1.moveTo(10, 210).initBox(true, true);
-			(new zetaret.global.packages.clockwork.skin.silver.RadioButton_SilverSkin()).initSkin(o.radiob1, zetaret.global.examples.ui.menu.SkinData.Silver);
-			o.radiob1.txt.setText("radio button 1 label");
-			o.winobj.body.addContent(o.radiob2);
-			o.radiob2.bgcheck = true;
-			o.radiob2.moveTo(10, 240).initBox(true, true);
-			(new zetaret.global.packages.clockwork.skin.silver.RadioButton_SilverSkin()).initSkin(o.radiob2, zetaret.global.examples.ui.menu.SkinData.Silver);
-			o.radiob2.txt.setText("radio button 2 label");
+			var rlinks = o.rlinks,
+				selectedRB = 0,
+				crg = [];
+
+			rlinks.forEach(function(e, i) {
+				var rb = new zetaret.global.packages.clockwork.ui.RadioButton();
+				o.winobj.body.addContent(rb);
+				if (i === 0) rb.checked = true;
+				else crg.push(rb);
+				rb.bgcheck = true;
+				rb.moveTo(10, 130 + i * 30).initBox(true, true);
+				(new zetaret.global.packages.clockwork.skin.silver.RadioButton_SilverSkin()).initSkin(rb, zetaret.global.examples.ui.menu.SkinData.Silver);
+				rb.txt.setText(e[1]);
+				e[2] = rb;
+			});
 
 			function onRBChange(e, d) {
-				var rg = o.radiob.radioGroup,
+				var rg = rlinks[0][2].radioGroup,
 					i, l = rg.length,
 					rb;
 				selectedRB = -1;
@@ -1083,8 +1084,8 @@ window.package("zetaret.global.examples.ui.pages").internal(
 					}
 				}
 			}
-			o.radiob.addEventListener("createRadioGroup", function(e, d) {
-				var rg = o.radiob.radioGroup,
+			rlinks[0][2].addEventListener("createRadioGroup", function(e, d) {
+				var rg = rlinks[0][2].radioGroup,
 					i, l = rg.length,
 					rb;
 				for (i = 0; i < l; i++) {
@@ -1092,7 +1093,7 @@ window.package("zetaret.global.examples.ui.pages").internal(
 					rb.addEventListener("change", onRBChange);
 				}
 			});
-			o.radiob.createRadioGroup([o.radiob1, o.radiob2]);
+			rlinks[0][2].createRadioGroup(crg);
 
 			o.winobj.body.addContent(o.ytbtn);
 			o.ytbtn.craft(180, 45, {
@@ -1129,7 +1130,7 @@ window.package("zetaret.global.examples.ui.pages").internal(
 					src: "https://www.youtube.com/embed/" + rlinks[srb]
 				});
 			});
-			o.ytbtn.moveTo(20, 280);
+			o.ytbtn.moveTo(20, 320);
 
 			o.winobj.body.addContent(o.label);
 			o.label.initLabel(zetaret.global.examples.ui.menu.SkinData.Silver.lbtxtstyle).setLabel("Clockwork components").moveTo(30, 30);
